@@ -1,0 +1,47 @@
+#ifndef CLCPP_PRNG_DECOMPOSITIONS_CLHPP
+#define CLCPP_PRNG_DECOMPOSITIONS_CLHPP
+#include <stddef.h>
+//create matrix vector multiply function
+void matrix_multiply_lower(float* A, float* x, float* res, size_t N)
+{
+    for(size_t i = 0; i < N; i++)
+    {
+        res[i] = 0;
+        for(size_t j = 0; j < i; j++)
+        {
+            res[i] += A[i*N+j]*x[j];
+        }
+    }
+}
+//Compute cholesky decomposition
+void cholesky(const float* A, float* L, size_t N)
+{
+for (size_t i = 0; i < N; i++) {
+    for (size_t j = 0; j <= i; j++) {
+        float sum = 0;
+        for (size_t k = 0; k < j; k++)
+        {
+            sum += L[i*N + k] * L[j*N + k];
+        }
+        if (i == j)
+        {
+            L[i*N + j] = sqrt(A[i*N + i] - sum);
+        }
+        else
+        {
+            L[i*N + j] = (1.0 / L[j*N + j] * (A[i*N + j] - sum));
+        }
+    }
+}
+}
+
+template <size_t N>
+void cholesky_solve(float* A, float* x, float* res)
+{
+    float* L[N*N];
+    cholesky(A, L, N);
+    matrix_vector_multiply(L, x, res, N);
+}
+
+
+#endif

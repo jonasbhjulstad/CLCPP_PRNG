@@ -1,0 +1,3 @@
+# Import the targets.
+set(CLCPP_PRNG_INCLUDE_DIR "@CLCPP_PRNG_SOURCE_DIR@/include")
+include("@CLCPP_PRNG_BINARY_DIR@/pkg/clcpp_prng-targets.cmake")
