@@ -21,7 +21,7 @@ configure_file(
    ${CLCPP_PRNG_SOURCE_DIR}/pkg/clcpp_prng-config.cmake.in
    ${CLCPP_PRNG_BINARY_DIR}/pkg/clcpp_prng-config.cmake @ONLY)
 
-
 install(FILES ${CLCPP_PRNG_BINARY_DIR}/pkg/clcpp_prng-config.cmake
-         ${CLCPP_PRNG_BINARY_DIR}/clcpp_prng-config-version.cmake
-         DESTINATION lib/clcpp_prng-${version})
+         DESTINATION lib/cmake/clcpp_prng)
+install(FILES ${CLCPP_PRNG_SOURCE_DIR}/include/CLCPP_PRNG.hpp
+      DESTINATION include/CLCPP_PRNG)
